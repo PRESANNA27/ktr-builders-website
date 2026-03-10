@@ -435,9 +435,6 @@
       <div class="proj-info" style="position:relative;z-index:2;"><h4>Residential Villa</h4><span>Residential Construction · Karaikal</span></div>
     </div>
   </div>
-  <div class="proj-note">
-    <p>📸 <strong>Upload your actual project photos</strong> to replace these placeholder cards and showcase your real completed buildings.</p>
-  </div>
 </section>
 
 <!-- WHY CHOOSE -->
@@ -558,7 +555,7 @@
           <option>Elevation Design / 3D Design</option>
           <option>Karaikal Real Estate – Buy/Sell</option>
           <option>Property Valuation</option>
-          <option>Turnkey Construction Project</option>
+          <option>Renovation Work</option>
           <option>Other Enquiry</option>
         </select>
       </div>
@@ -741,10 +738,5 @@
 
   // Scroll reveal
   const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = "1";
-      e.target.style.transform = "translateY(0)";
-      obs.unobserve(e.target); // reveal only once
-    }
-  }); }, { threshold: 0.1 });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.sty
