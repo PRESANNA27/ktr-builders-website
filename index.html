@@ -2222,13 +2222,10 @@
     closeEnquiryModal();
     document.getElementById('enquiryForm').reset();
   }
-  // Auto-open after 18s if user hasn't interacted
-  var _eqOpened = false;
+  // Auto-open popup after 4 seconds on page load
   setTimeout(function() {
-    if (!_eqOpened) { openEnquiryModal(); _eqOpened = true; }
-  }, 18000);
-  // Mark as interacted on scroll
-  window.addEventListener('scroll', function() { _eqOpened = true; }, { once: true });
+    openEnquiryModal();
+  }, 4000);
 
   function scrollRow(btn, dir) {
     var row = btn.closest('.scroll-row-wrap').querySelector('.scroll-row');
