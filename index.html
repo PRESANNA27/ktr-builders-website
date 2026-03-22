@@ -53,14 +53,15 @@
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 40%, rgba(200,145,42,0.14) 0%, transparent 70%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,145,42,0.06) 0%, transparent 60%); }
     .hero-pattern { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent); }
     .hero-content { position: relative; z-index: 1; max-width: 720px; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,145,42,0.15); border: 1px solid rgba(200,145,42,0.4); color: var(--gold2); padding: 0.45rem 1.1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem; animation: fadeUp 0.7s 0.1s ease both; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,145,42,0.15); border: 1px solid rgba(200,145,42,0.4); color: var(--gold2); padding: 0.45rem 1.1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.6rem; animation: fadeUp 0.7s 0.1s ease both; }
     .hero-badge::before { content:''; width: 6px; height: 6px; background: var(--gold2); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.0; color: var(--white); animation: fadeUp 0.7s 0.2s ease both; }
-    .hero h1 span { color: var(--gold2); }
-    .hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.45rem); color: rgba(255,255,255,0.85); font-weight: 500; margin-top: 0.6rem; font-style: italic; animation: fadeUp 0.7s 0.35s ease both; }
-    .hero-sub { margin-top: 1.2rem; font-size: 1.02rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 580px; animation: fadeUp 0.7s 0.5s ease both; }
-    .hero-btns { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.65s ease both; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.8rem, 9vw, 7rem); font-weight: 800; line-height: 1.0; color: var(--white); animation: fadeUp 0.7s 0.2s ease both; margin-bottom: 0.2rem; }
+    .hero-brand-ktr { color: var(--white); }
+    .hero-brand-builders { color: var(--gold2); }
+    .hero-tagline { font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: rgba(255,255,255,0.9); font-weight: 600; margin-top: 0.4rem; font-style: italic; animation: fadeUp 0.7s 0.35s ease both; }
+    .hero-sub { margin-top: 1rem; font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 580px; animation: fadeUp 0.7s 0.45s ease both; }
+    .hero-btns { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.75s ease both; }
     .btn-gold { background: var(--gold); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 600; font-size: 0.98rem; text-decoration: none; transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.5rem; }
     .btn-gold:hover { background: #b07d20; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,145,42,0.4); }
     .btn-outline-w { background: transparent; border: 1.5px solid rgba(255,255,255,0.35); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 500; font-size: 0.98rem; text-decoration: none; transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.5rem; }
@@ -68,6 +69,19 @@
     .btn-wa { background: #25D366; color: var(--white); padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 600; font-size: 0.98rem; text-decoration: none; transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.5rem; }
     .btn-wa:hover { background: #1fb558; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.35); }
     .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.8s ease both; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.12); }
+    .hero-kpa-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,145,42,0.18); border: 1px solid rgba(200,145,42,0.45); color: var(--gold2); padding: 0.45rem 1.1rem; border-radius: 50px; font-size: 0.84rem; font-weight: 600; margin-top: 1rem; animation: fadeUp 0.7s 0.5s ease both; }
+    .hero-quote { font-style: italic; margin-top: 1rem; color: rgba(204,204,204,0.9); font-size: 1rem; line-height: 1.6; max-width: 560px; animation: fadeUp 0.7s 0.55s ease both; }
+    .hero-trust { color: #D4AF37; margin-top: 0.9rem; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; animation: fadeUp 0.7s 0.6s ease both; }
+    .hero-highlights { margin-top: 1rem; list-style: none; padding: 0; animation: fadeUp 0.7s 0.65s ease both; }
+    .hero-highlights li { color: #D4AF37; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: clamp(2.8rem, 12vw, 4rem) !important; }
+      .hero-tagline { font-size: 1.05rem; }
+      .hero-sub { font-size: 0.93rem; }
+      .hero-quote { font-size: 0.9rem; }
+      .hero-trust { font-size: 0.88rem; }
+      .hero-kpa-badge { font-size: 0.78rem; }
+    }
     .stat { display: flex; flex-direction: column; gap: 0.15rem; }
     .stat-n { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold2); line-height: 1; }
     .stat-l { font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.2rem; }
@@ -888,27 +902,26 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg-slide" style="position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('images/img_001.jpg');transition:opacity 0.8s ease;z-index:0;"></div>
+  <div class="hero-bg-slide" style="position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('images/hero_1.jpg');transition:opacity 0.8s ease;z-index:0;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,25,55,0.88) 0%,rgba(15,31,61,0.70) 100%);z-index:1;"></div>
   <div class="hero-pattern"></div>
   <div class="hero-content" style="position:relative;z-index:2;">
-    <div class="hero-badge">Best Builders in Karaikal · Est. 1999</div>
-    <h1>KTR <span>BUILDERS</span></h1>
+    <div class="hero-badge">Best Builders in Karaikal · Est. 1996</div>
+    <h1><span class="hero-brand-ktr">KTR</span> <span class="hero-brand-builders">BUILDERS</span></h1>
     <div class="hero-tagline">Build Your Dream with Quality &amp; Trust</div>
-    <p class="hero-sub">Trusted Building Construction &amp; Real Estate Experts in Karaikal with <strong style="color:rgba(255,255,255,0.9)">28+ Years of Experience.</strong> Residential, Commercial &amp; Industrial Construction — all under one roof.<br><span style="display:inline-block;margin-top:0.6rem;background:rgba(200,145,42,0.15);border:1px solid rgba(200,145,42,0.35);color:#E8B84B;padding:0.3rem 0.9rem;border-radius:50px;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;">✅ Registered Engineer – Karaikal Planning Authority (KPA)</span></p>
+    <p class="hero-sub">Trusted Building Construction &amp; Real Estate Experts in Karaikal with <strong>28+ Years of Experience.</strong> Residential, Commercial &amp; Industrial Construction — all under one roof.</p>
+    <div class="hero-kpa-badge">✅ Registered Engineer – Karaikal Planning Authority (KPA)</div>
+    <p class="hero-quote">"Your dream. Our responsibility — built with expertise, designed for your lifestyle."</p>
+    <p class="hero-trust">⭐ Trusted by 60+ Happy Clients Across Karaikal &amp; Puducherry</p>
     <div class="hero-btns">
       <a href="#contact" class="btn-gold">📞 Contact Us</a>
       <a href="#enquiry" class="btn-outline-w" onclick="openEnquiryModal();return false;">📋 Get Quote</a>
       <a href="https://wa.me/919047026074" target="_blank" class="btn-wa">💬 WhatsApp</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-n">60+</div><div class="stat-l">Buildings Constructed</div></div>
-      <div class="stat"><div class="stat-n">2+</div><div class="stat-l">Industrial Projects</div></div>
-      <div class="stat"><div class="stat-n">100+</div><div class="stat-l">Plans Designed</div></div>
-      <div class="stat"><div class="stat-n">28+</div><div class="stat-l">Years Experience</div></div>
-    </div>
   </div>
 </section>
+
+
 
 <!-- HIGHLIGHTS -->
 <div class="highlights">
@@ -2095,29 +2108,14 @@
   }
 
   // ── Hero Slideshow ──
-  var heroSlides = [
-    'images/img_070.jpg',
-    'images/img_071.jpg',
-    'images/img_072.jpg'
-  ];
-  var heroIdx = 0;
-  var heroEl = document.querySelector('.hero-bg-slide');
-  if (heroEl) {
-    setInterval(function() {
-      heroEl.style.opacity = '0';
-      setTimeout(function() {
-        heroIdx = (heroIdx + 1) % heroSlides.length;
-        heroEl.style.backgroundImage = "url('" + heroSlides[heroIdx] + "')";
-        heroEl.style.opacity = '1';
-      }, 800);
-    }, 5000);
-  }
 
 
   var heroSlides = [
-    'images/img_001.jpg',
-    'images/img_073.jpg',
-    'images/img_074.jpg'
+    'images/hero_1.jpg',
+    'images/hero_2.jpg',
+    'images/hero_3.jpg',
+    'images/hero_4.jpg',
+    'images/hero_5.jpg'
   ];
   var heroIdx = 0;
   var heroEl = document.querySelector('.hero-bg-slide');
@@ -2222,10 +2220,10 @@
     closeEnquiryModal();
     document.getElementById('enquiryForm').reset();
   }
-  // Auto-open popup after 4 seconds on page load
+  // Auto-open popup after 6 seconds on page load
   setTimeout(function() {
     openEnquiryModal();
-  }, 4000);
+  }, 6000);
 
   function scrollRow(btn, dir) {
     var row = btn.closest('.scroll-row-wrap').querySelector('.scroll-row');
