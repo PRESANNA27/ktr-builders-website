@@ -213,14 +213,167 @@
     .services-header .sec-sub { margin: 0.9rem auto 0; }
     .services-header .divider { margin: 1rem auto; }
     .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.8rem; }
-    .srv-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.2rem; transition: all 0.3s; position: relative; overflow: hidden; }
-    .srv-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold2)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
-    .srv-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: rgba(200,145,42,0.3); }
+    /* ── Services Section ── */
+    .srv-deco-line {
+      position: absolute; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(200,145,42,0.15), transparent);
+      pointer-events: none;
+    }
+    .srv-deco-line--left  { left: 5%; }
+    .srv-deco-line--right { right: 5%; }
+    .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.6rem; }
+
+    /* Card base */
+    .srv-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2.2rem 2rem 1.8rem;
+      position: relative; overflow: hidden;
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease,
+                  box-shadow 0.3s ease, border-color 0.3s ease;
+      display: flex; flex-direction: column;
+    }
+    .srv-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* Top gold bar sweep */
+    .srv-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
     .srv-card:hover::after { transform: scaleX(1); }
-    .srv-icon { font-size: 2.4rem; margin-bottom: 1.2rem; }
-    .srv-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 1rem; }
-    .srv-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .srv-list li { font-size: 0.88rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+
+    /* Hover */
+    .srv-card:hover {
+      border-color: rgba(200,145,42,0.4);
+      box-shadow: 0 0 0 1px rgba(200,145,42,0.12),
+                  0 20px 48px rgba(0,0,0,0.10),
+                  0 0 30px rgba(200,145,42,0.08);
+      transform: translateY(-8px);
+    }
+
+    /* Card top row: icon + number */
+    .srv-card-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 1.4rem;
+    }
+    .srv-icon-wrap {
+      width: 58px; height: 58px;
+      background: var(--gold-light);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      transition: background 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      flex-shrink: 0;
+    }
+    .srv-card:hover .srv-icon-wrap {
+      background: var(--gold);
+      color: var(--white);
+      transform: scale(1.1) rotate(4deg);
+    }
+    .srv-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 800; line-height: 1;
+      color: rgba(200,145,42,0.12);
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .srv-card:hover .srv-num { color: rgba(200,145,42,0.25); }
+
+    /* Heading */
+    .srv-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.18rem; font-weight: 800;
+      color: var(--navy); margin-bottom: 0.7rem;
+      letter-spacing: 0.2px;
+      transition: color 0.3s ease;
+    }
+    .srv-card:hover h3 { color: var(--gold); }
+
+    /* Description */
+    .srv-desc {
+      font-size: 0.87rem; color: var(--muted);
+      line-height: 1.7; margin-bottom: 1.2rem;
+    }
+
+    /* Feature list */
+    .srv-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 0.4rem;
+      flex: 1; margin-bottom: 1.5rem;
+    }
+    .srv-list li {
+      font-size: 0.85rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.55rem;
+      padding: 0.28rem 0;
+      border-bottom: 1px solid rgba(229,224,216,0.6);
+      opacity: 0; transform: translateX(-8px);
+      transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+    }
+    .srv-list li:last-child { border-bottom: none; }
+    .srv-card.visible .srv-list li { opacity: 1; transform: translateX(0); }
+    .srv-card.visible .srv-list li:nth-child(1) { transition-delay: 0.12s; }
+    .srv-card.visible .srv-list li:nth-child(2) { transition-delay: 0.22s; }
+    .srv-card.visible .srv-list li:nth-child(3) { transition-delay: 0.32s; }
+    .srv-card.visible .srv-list li:nth-child(4) { transition-delay: 0.42s; }
+    .srv-list li:hover { color: var(--gold); padding-left: 4px; }
+    .srv-list li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* CTA link */
+    .srv-cta {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--navy); text-decoration: none;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.6rem 1.1rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      background: transparent;
+      transition: all 0.25s ease;
+      margin-top: auto; align-self: flex-start;
+    }
+    .srv-cta svg { transition: transform 0.25s ease; }
+    .srv-card:hover .srv-cta {
+      background: var(--gold); color: var(--white);
+      border-color: var(--gold);
+    }
+    .srv-card:hover .srv-cta svg { transform: translateX(4px); }
+
+    /* Trust bar below cards */
+    .srv-trust-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-top: 3.5rem;
+      background: var(--navy); border-radius: 14px;
+      padding: 1.8rem 2rem; flex-wrap: wrap;
+    }
+    .srv-trust-item {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.2rem; padding: 0 2.5rem; text-align: center;
+    }
+    .srv-trust-item strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 800; color: var(--gold2); line-height: 1;
+    }
+    .srv-trust-item span { font-size: 0.72rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; }
+    .srv-trust-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+    @media (max-width: 640px) {
+      .srv-trust-bar { gap: 1rem; }
+      .srv-trust-item { padding: 0.5rem 1rem; }
+      .srv-trust-divider { display: none; }
+      .srv-deco-line { display: none; }
+    }
+
+
+ }
     .srv-list li::before { content: '→'; color: var(--gold); font-weight: 700; }
     
     .area-pill { background: rgba(255,255,255,0.07); border: 1.5px solid rgba(200,145,42,0.25); border-radius: 50px; padding: 0.6rem 1.3rem; color: rgba(255,255,255,0.8); font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
@@ -939,7 +1092,7 @@
   <!-- Banner: moved from side box, now sits above content as a premium strip -->
   <div class="about-banner">
     <div class="about-banner-text">
-      <span>🏛️</span> Building Excellence Since 1996 — Karaikal's Trusted Builders
+      <span>🏛️</span> Building Excellence Since 1999 — Karaikal's Trusted Builders
     </div>
     <div class="about-banner-badge">
       <strong>28+</strong>
@@ -1004,54 +1157,162 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services" style="background:var(--bg); padding:5.5rem 5%;">
+<section id="services" style="background:#FAFAF8; padding:5.5rem 5% 6rem; position:relative; overflow:hidden;">
+
+  <!-- Decorative line elements -->
+  <div class="srv-deco-line srv-deco-line--left"></div>
+  <div class="srv-deco-line srv-deco-line--right"></div>
+
+  <!-- Section header -->
   <div class="services-header">
     <div class="sec-tag">What We Offer</div>
     <h2 class="sec-title">Our Services</h2>
     <div class="divider"></div>
-    <p class="sec-sub">Complete building and real estate solutions for Karaikal &amp; Puducherry — from planning and design to construction and handover.</p>
+    <p class="sec-sub">Complete building &amp; real estate solutions across Karaikal &amp; Puducherry — trusted by 60+ clients since 1999.</p>
   </div>
+
+  <!-- Service cards grid -->
   <div class="srv-grid">
-    <div class="srv-card">
-      <div class="srv-icon">🏠</div>
+
+    <div class="srv-card" data-number="01">
+      <div class="srv-card-top">
+        <div class="srv-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="srv-num">01</span>
+      </div>
       <h3>Building Planning</h3>
+      <p class="srv-desc">Precision-engineered plans that translate your vision into construction-ready drawings — accurate, compliant, and built to last.</p>
       <ul class="srv-list">
-        <li>2D Building Plans</li>
+        <li>2D Architectural Plans</li>
         <li>Structural Layout Design</li>
         <li>Construction Drawings</li>
         <li>KPA Approval Assistance</li>
       </ul>
+      <a href="#enquiry" class="srv-cta" onclick="openEnquiryModal();return false;">
+        Request a Plan
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
-    <div class="srv-card">
-      <div class="srv-icon">🏗️</div>
+
+    <div class="srv-card" data-number="02">
+      <div class="srv-card-top">
+        <div class="srv-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="2 8 12 13 22 8"/></svg>
+        </div>
+        <span class="srv-num">02</span>
+      </div>
       <h3>Building Construction</h3>
+      <p class="srv-desc">From foundation to finishing — we build with quality materials, skilled labour, and 28+ years of site expertise across all building types.</p>
       <ul class="srv-list">
-        <li>Residential Construction</li>
-        <li>Commercial Construction</li>
-        <li>Industrial Construction</li>
-        <li>Building Renovations</li>
-        
+        <li>Residential House Construction</li>
+        <li>Commercial Building Construction</li>
+        <li>Industrial &amp; Factory Structures</li>
+        <li>Renovation &amp; Extension Works</li>
       </ul>
+      <a href="#enquiry" class="srv-cta" onclick="openEnquiryModal();return false;">
+        Start Your Build
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
-    <div class="srv-card">
-      <div class="srv-icon">🎨</div>
-      <h3>Elevation Design</h3>
+
+    <div class="srv-card" data-number="03">
+      <div class="srv-card-top">
+        <div class="srv-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <span class="srv-num">03</span>
+      </div>
+      <h3>Elevation &amp; 3D Design</h3>
+      <p class="srv-desc">Modern facades and photo-realistic 3D visualizations — see exactly how your building will look before a single brick is laid.</p>
       <ul class="srv-list">
-        <li>Modern Elevation Design</li>
-        <li>Exterior Architecture</li>
-        <li>3D Concept Design</li>
+        <li>Modern Exterior Elevation Design</li>
+        <li>3D Architectural Visualization</li>
+        <li>Facade &amp; Colour Consultation</li>
+        <li>Custom Architectural Themes</li>
       </ul>
+      <a href="#enquiry" class="srv-cta" onclick="openEnquiryModal();return false;">
+        View Design Process
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
-    <div class="srv-card">
-      <div class="srv-icon">🏡</div>
+
+    <div class="srv-card" data-number="04">
+      <div class="srv-card-top">
+        <div class="srv-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M16.24 7.76a6 6 0 010 8.49M7.76 16.24a6 6 0 010-8.49"/></svg>
+        </div>
+        <span class="srv-num">04</span>
+      </div>
+      <h3>KPA Plan Approval</h3>
+      <p class="srv-desc">Registered with the Karaikal Planning Authority — we manage the full approval process so you can build legally and without delays.</p>
+      <ul class="srv-list">
+        <li>KPA Building Plan Approval</li>
+        <li>Government Permit Processing</li>
+        <li>Compliance Documentation</li>
+        <li>Registered Engineer Certified</li>
+      </ul>
+      <a href="#enquiry" class="srv-cta" onclick="openEnquiryModal();return false;">
+        Get Approval Help
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="srv-card" data-number="05">
+      <div class="srv-card-top">
+        <div class="srv-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <span class="srv-num">05</span>
+      </div>
       <h3>Real Estate Services</h3>
+      <p class="srv-desc">Expert property guidance for buyers, sellers, and investors in Karaikal and Puducherry — backed by deep local market knowledge.</p>
       <ul class="srv-list">
         <li>Property Buying &amp; Selling</li>
-        <li>Land Development</li>
-        <li>Property Valuation</li>
+        <li>Land Development &amp; Layouts</li>
+        <li>Certified Property Valuation</li>
+        <li>Real Estate Investment Advice</li>
       </ul>
+      <a href="#enquiry" class="srv-cta" onclick="openEnquiryModal();return false;">
+        Talk to Us
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
+
+    <div class="srv-card" data-number="06">
+      <div class="srv-card-top">
+        <div class="srv-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="srv-num">06</span>
+      </div>
+      <h3>Interior &amp; Finishing</h3>
+      <p class="srv-desc">The final touches that turn a structure into a home — premium flooring, false ceilings, painting, and modular fittings.</p>
+      <ul class="srv-list">
+        <li>False Ceiling &amp; Lighting Design</li>
+        <li>Flooring &amp; Tile Work</li>
+        <li>Texture Paint &amp; Wall Finishes</li>
+        <li>Modular Kitchen &amp; Wardrobes</li>
+      </ul>
+      <a href="#enquiry" class="srv-cta" onclick="openEnquiryModal();return false;">
+        Explore Finishes
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
   </div>
+
+  <!-- Bottom trust bar -->
+  <div class="srv-trust-bar">
+    <div class="srv-trust-item"><strong>28+</strong><span>Years Experience</span></div>
+    <div class="srv-trust-divider"></div>
+    <div class="srv-trust-item"><strong>60+</strong><span>Projects Completed</span></div>
+    <div class="srv-trust-divider"></div>
+    <div class="srv-trust-item"><strong>100+</strong><span>Plans Designed</span></div>
+    <div class="srv-trust-divider"></div>
+    <div class="srv-trust-item"><strong>KPA</strong><span>Registered Engineer</span></div>
+  </div>
+
 </section>
 
 <!-- PROJECTS -->
@@ -1070,12 +1331,12 @@
     <div class="proj-card" style="background:#000;overflow:hidden;">
       <img src="images/img_003.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.85;"/>
       <div class="proj-label">Completed</div>
-      <div class="proj-info" style="position:relative;z-index:2;"><h4>Industrial Building</h4><span>Industrial Construction · Karaikal</span></div>
+      <div class="proj-info" style="position:relative;z-index:2;"><h4>Industrial Building</h4><span>Industrial Building Construction</span></div>
     </div>
     <div class="proj-card" style="background:#000;overflow:hidden;">
       <img src="images/img_004.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;" alt="Commercial Building Construction Karaikal - KTR Builders"/>
       <div class="proj-label">Completed</div>
-      <div class="proj-info" style="position:relative;z-index:2;"><h4>Commercial Building</h4><span>Commercial Construction · Karaikal</span></div>
+      <div class="proj-info" style="position:relative;z-index:2;"><h4>Commercial Building</h4><span>Commercial Building Construction</span></div>
     </div>
     <div class="proj-card" style="background:#fff;overflow:hidden;">
       <img src="images/img_001.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;filter:grayscale(20%);" alt="2D Building Plan Design Karaikal - KTR Builders"/>
@@ -1434,7 +1695,7 @@
       <div class="scroll-card" data-cat="residential" onclick="openGalleryLB(35)">
         <img src="images/img_043.jpg" alt="Residential Building Karaikal – KTR Builders" loading="lazy"/>
         <span class="gal-real-badge">KTR Work</span>
-        <div class="scroll-overlay"><span>Commercial Building – Karaikal</span></div>
+        <div class="scroll-overlay"><span>Commercial Building</span></div>
       </div>
       <div class="scroll-card" data-cat="residential" onclick="openGalleryLB(36)">
         <img src="images/img_044.jpg" alt="Construction Work Karaikal – KTR Builders" loading="lazy"/>
@@ -2130,16 +2391,35 @@
 
   // ── Scroll reveal ──
   document.addEventListener('DOMContentLoaded', function() {
-    var obs = new IntersectionObserver(function(entries) {
+    // General scroll reveal for misc cards
+    var genObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.srv-card,.t-card,.why-item,.vm-card,.proj-card,.hl-item,.exp-row').forEach(function(el) {
-      el.style.opacity='0'; el.style.transform='translateY(20px)';
-      el.style.transition='opacity 0.5s ease, transform 0.5s ease';
-      obs.observe(el);
+    document.querySelectorAll('.t-card,.why-item,.vm-card,.proj-card,.hl-item,.exp-row').forEach(function(el) {
+      el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      genObs.observe(el);
     });
+
+    // Ultra-premium staggered entry for service cards
+    var srvCards = Array.from(document.querySelectorAll('.srv-card'));
+    var srvObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var idx = srvCards.indexOf(entry.target);
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, idx * 130);
+          srvObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    srvCards.forEach(function(card) { srvObs.observe(card); });
   });
 </script>
 
