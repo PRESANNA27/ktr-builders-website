@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+  <!-- Logo declared early for Google indexing -->
+  <link rel="icon" type="image/png" href="images/logo.png"/>
+  <link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+  <link rel="apple-touch-icon" href="images/logo.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,7 +19,11 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://ktrbuilders.com/"/>
   <meta property="og:image" content="https://ktrbuilders.com/images/logo.png"/>
-  <meta property="og:image:alt" content="KTR Builders Logo"/>
+  <meta property="og:image:secure_url" content="https://ktrbuilders.com/images/logo.png"/>
+  <meta property="og:image:type" content="image/png"/>
+  <meta property="og:image:width" content="512"/>
+  <meta property="og:image:height" content="512"/>
+  <meta property="og:image:alt" content="KTR Builders Logo – Best Construction Company in Karaikal"/>
   <meta property="og:site_name" content="KTR Builders"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="KTR Builders – Top Construction Company in Karaikal"/>
@@ -23,8 +31,7 @@
   <meta name="twitter:image" content="https://ktrbuilders.com/images/logo.png"/>
   <link rel="canonical" href="https://ktrbuilders.com/"/>
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
-  <link rel="icon" type="image/png" href="images/logo.png"/>
-  <link rel="apple-touch-icon" href="images/logo.png"/>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; max-width: 100%; }
@@ -48,6 +55,7 @@
       height: 72px; border-bottom: 1px solid rgba(200,145,42,0.2);
     }
     .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo img { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; height: 50px; width: auto; }
     .nav-logo-icon { display: none; }  /* replaced by logo image */
     .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); line-height: 1.1; }
     .nav-logo-text small { display: block; font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 400; color: var(--gold2); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -1256,12 +1264,48 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "KTR Builders",
+  "alternateName": "KTR Builders Karaikal",
+  "url": "https://ktrbuilders.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ktrbuilders.com/images/logo.png",
+    "width": 512,
+    "height": 512,
+    "caption": "KTR Builders Logo – Best Construction Company in Karaikal"
+  },
+  "image": "https://ktrbuilders.com/images/logo.png",
+  "description": "KTR Builders is a leading construction company in Karaikal with 28+ years experience. House construction, interior design and real estate services in Karaikal, Puducherry, Nagapattinam and Chennai.",
+  "telephone": "+91-90470-26074",
+  "email": "ksasikumar2875@gmail.com",
+  "foundingDate": "1999",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Karaikal",
+    "addressLocality": "Karaikal",
+    "addressRegion": "Puducherry",
+    "postalCode": "609602",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://ktrbuilders.com",
+    "https://wa.me/919047026074",
+    "https://g.page/r/CUQwLQXKBR9bEBM/review"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ConstructionCompany"],
   "name": "KTR Builders",
   "description": "Trusted building contractor in Karaikal with 28+ years experience. Residential, commercial, industrial construction and real estate services.",
   "telephone": "+91-90470-26074",
   "email": "ksasikumar2875@gmail.com",
   "url": "https://ktrbuilders.com",
+  "image": "https://ktrbuilders.com/images/logo.png",
+  "logo": "https://ktrbuilders.com/images/logo.png",
   "foundingDate": "1999",
   "priceRange": "₹₹",
   "address": {
@@ -1326,10 +1370,10 @@
 <!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo" aria-label="KTR Builders – Best Construction Company in Karaikal">
-    <img src="images/logo.png" alt="KTR Builders Logo"
-         width="48" height="48"
-         style="width:48px;height:48px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0;"
-         loading="eager" fetchpriority="high"/>
+    <img src="images/logo.png" alt="KTR Builders Logo – Best Construction Company in Karaikal"
+         width="50" height="50"
+         style="width:50px;height:50px;object-fit:contain;background:transparent;padding:0;border:none;box-shadow:none;flex-shrink:0;"
+         loading="eager" fetchpriority="high" decoding="async"/>
     <div class="nav-logo-text">KTR Builders<small>Construction &amp; Real Estate · Karaikal</small></div>
   </a>
   <ul class="nav-links">
@@ -2892,10 +2936,10 @@
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
-      <img src="images/logo.png" alt="KTR Builders Logo"
+      <img src="images/logo.png" alt="KTR Builders Logo – Trusted Builders in Karaikal Since 1999"
            width="72" height="72"
-           style="width:72px;height:72px;object-fit:contain;border-radius:8px;background:#fff;padding:4px;display:block;margin-bottom:0.8rem;"
-           loading="lazy"/>
+           style="width:72px;height:72px;object-fit:contain;background:transparent;padding:0;border:none;box-shadow:none;display:block;margin-bottom:0.8rem;"
+           loading="lazy" decoding="async"/>
       <p>KTR Builders is a trusted building contractor in Karaikal with 28+ years of experience. We provide high-quality residential, commercial, and industrial construction services including interior design and real estate services across Karaikal, Mayiladuthurai, Puducherry, Nagapattinam, and Chennai.</p>
     </div>
     <div class="ft-col">
